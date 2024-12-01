@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Cricket Score</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .score-container {
+      margin-top: 20px;
+    }
+    .score-box {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
+    .score-box h3 {
+      margin: 0;
+    }
+    .score-box p {
+      font-size: 1.2em;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Cricket Scores</h1>
+  <div id="scores" class="score-container"></div>
+
+  <script>
+    async function getLiveScores() {
+      const liveScores = [
+        {
+          homeTeam: 'India',
+          awayTeam: 'Australia',
+          status: 'Live',
+          score: 'India: 150/3 (15 overs) - Australia: 130/4 (15 overs)',
+          venue: 'Wankhede Stadium, Mumbai'
+        },
+        {
+          homeTeam: 'England',
+          awayTeam: 'South Africa',
+          status: 'Live',
+          score: 'England: 200/5 (18 overs) - South Africa: 190/6 (18 overs)',
+          venue: 'Lord\'s Cricket Ground, London'
+        },
+        {
+          homeTeam: 'Pakistan',
+          awayTeam: 'Sri Lanka',
+          status: 'Completed',
+          score: 'Pakistan: 250/10 (50 overs) - Sri Lanka: 220/9 (50 overs)',
+          venue: 'Gaddafi Stadium, Lahore'
+        },
+      ];
+
+      const scoresContainer = document.getElementById('scores');
+      scoresContainer.innerHTML = '';
+
+      if (liveScores.length) {
+        liveScores.forEach(match => {
+          const matchBox = document.createElement('div');
+          matchBox.classList.add('score-box');
+          matchBox.innerHTML = `
+            <h3>${match.homeTeam} vs ${match.awayTeam}</h3>
+            <p>Match Status: ${match.status}</p>
+            <p>Score: ${match.score}</p>
+            <p>Venue: ${match.venue}</p>
+          `;
+          scoresContainer.appendChild(matchBox);
+        });
+      } else {
+        scoresContainer.innerHTML = '<p>No live matches at the moment.</p>';
+      }
+    }
+
+    window.onload = getLiveScores;
+  </script>
+</body>
+</html>

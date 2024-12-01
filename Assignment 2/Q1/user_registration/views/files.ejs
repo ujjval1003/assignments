@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Uploaded Files</title>
+    </head>
+    <body>
+        <h1>Uploaded Files</h1>
+        <% users.forEach(user => { %>
+            <h2>User: <%= user.name %></h2>
+            <ul>
+                <% user.files.forEach(file => { %>
+                    <li>
+                        <a href="/download/<%= file %>"><%= file %></a>
+                    </li>
+                <% }) %>
+            </ul>
+        <% }) %>
+    </body>
+</html>

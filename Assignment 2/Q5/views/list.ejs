@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Students</h1>
+        <form action="/logout/" method="POST">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form><br><br>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sem</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < students.length; i++) { %>
+                    <tr>
+                        <td><%= students[i].name %></td>
+                        <td><%= students[i].sem %></td>
+                        <td><%= students[i].email %></td>
+                        <td><%= students[i].password %></td>
+                        <td>
+                            <a href="/students/edit/<%= students[i]._id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="/students/delete/<%= students[i]._id %>" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

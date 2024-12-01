@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student List</title>
+    </head>
+    <body>
+        <h1>Students</h1>
+        <form action="/logout/" method="POST"> <button type="submit">Logout</button> </form><br><br>
+        <table border="1" align="center" style="width: 100%;">
+            <tr>
+                <th>Name</th>
+                <th>Sem</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+            <% for(var i=0; i<students.length; i++) { %>
+                <tr>
+                    <td><%= students[i].name %></td>
+                    <td><%= students[i].sem %></td>
+                    <td><%= students[i].email %></td>
+                    <td><%= students[i].password %></td>
+                    <td><a href="/students/edit/<%= students[i]._id %>">edit</a> <form action="/students/delete/<%= students[i]._id %>" method="POST"> <button type="submit">Delete</button> </form>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

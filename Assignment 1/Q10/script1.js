@@ -1,0 +1,1 @@
+console.log("This is Script 1: Database initialization");
